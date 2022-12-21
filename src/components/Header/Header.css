@@ -1,5 +1,6 @@
 .header {
-    background: #496DDB;
+    background: rgb(20,11,166);
+    background: linear-gradient(90deg, #140ba6 0%, rgba(221,58,139,1) 49%, rgba(0,212,255,1) 100%);
     padding: 20px calc(50% - 500px) 10px;
 }
 
@@ -8,4 +9,9 @@
     color: #FFEEDB;
     font-size: 45px;
     margin-left: 40px;
+}
+
+.link{
+    cursor: pointer;
+    color: white;
 }

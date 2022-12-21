@@ -1,0 +1,28 @@
+.slider-container{
+    overflow: hidden;
+}
+.card{
+
+    padding: 20px;
+    overflow: hidden;
+    height: 97vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.card-image{
+    height: 100%;
+}
+.details{
+    color: white;
+    height: 300px;
+    font-weight: 19px;
+    border-radius: 10px;
+    font-style: italic;
+    background-color: rgb(163, 130, 194);
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

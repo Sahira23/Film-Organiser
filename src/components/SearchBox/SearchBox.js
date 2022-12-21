@@ -1,43 +1,46 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getbysearch } from '../../state/actions/actions';
 import './SearchBox.css';
 
-class SearchBox extends Component {
-    state = {
-        searchLine: ''
-    }
-    searchLineChangeHandler = (e) => {
-        this.setState({ searchLine: e.target.value });
-    }
-    searchBoxSubmitHandler = (e) => {
-        e.preventDefault();
-    }
-    render() {
-        const { searchLine } = this.state;
+const SearchBox = () => {
+    const dispatch = useDispatch();
+    const data = useSelector(state => state.filmData);
+    const [state, setState] = useState({
+        searchLine: '',
+    })
 
-        return (
-            <div className="search-box">
-                <form className="search-box__form" onSubmit={this.searchBoxSubmitHandler}>
-                    <label className="search-box__form-label">
-                        Искать фильм по названию:
-                        <input
-                            value={searchLine}
-                            type="text"
-                            className="search-box__form-input"
-                            placeholder="Например, Shawshank Redemption"
-                            onChange={this.searchLineChangeHandler}
-                        />
-                    </label>
-                    <button
-                        type="submit"
-                        className="search-box__form-submit"
-                        disabled={!searchLine}
-                    >
-                        Искать
-                    </button>
-                </form>
-            </div>
-        );
+    const searchLineChangeHandler = (e) => {
+        setState({ ...state,searchLine: e.target.value });
     }
+    const searchBoxSubmitHandler = (e) => {
+        e.preventDefault();
+        dispatch(getbysearch(state.searchLine));
+        state.searchLine=""
+    }
+    return (
+        <div className="search-box">
+            <form className="search-box__form d-flex align-items-center" onSubmit={searchBoxSubmitHandler}>
+                <label className="search-box__form-label">
+                    <input
+                        value={state.searchLine}
+                        type="text"
+                        className="search-box__form-input"
+                        placeholder="Например, Shawshank Redemption"
+                        onChange={searchLineChangeHandler}
+                    />
+                </label>
+                <button
+                    type="submit"
+                    className="search-box__form-submit"
+                    disabled={!state.searchLine}
+                >
+                    Искать
+                </button>
+            </form>
+        </div>
+    );
 }
- 
-export default SearchBox;
+
+export default SearchBox

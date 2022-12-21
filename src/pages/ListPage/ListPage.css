@@ -1,10 +1,17 @@
 .list-page {
     padding: 42px calc(50% - 300px);
+    height: 100vh;
+    background-image: url("../../images//bgimg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .list-page__title {
     font-size: 34px;
     margin-bottom: 26px;
+    font-style: italic;
+    font-weight: 600;
 }
 
 .list-page ul li {
